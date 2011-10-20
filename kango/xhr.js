@@ -1,0 +1,9 @@
+﻿/*
+Built using Kango - Cross Browser Extensions framework.
+http://kangoextensions.com/
+*/
+function KangoXHR(){}
+KangoXHR.prototype={_paramsToString:function(a){var c=!0,e="",d;for(d in a)c||(e+="&"),e+=d+"="+a[d],c=!1;return e},getXMLHttpRequest:function(){return new XMLHttpRequest},KangoXHRRequest:function(){this.method="GET";this.url="";this.params={};this.headers={};this.async=!0;this.password=this.username=this.contentType=""},KangoXHRResult:function(){this.response="";this.status=0},send:function(a,c){function e(a,c){var b={response:null,status:0,abort:function(){a.abort()}};if(a.readyState>=2&&(b.status=
+a.status,a.readyState==4)){if(c=="xml")b.response=a.responseXML;else if(c=="json")try{b.response=JSON.parse(a.responseText)}catch(d){}else b.response=a.responseText;b.abort=function(){}}return b}function d(){return{response:null,status:0,abort:function(){}}}var b=this.getXMLHttpRequest(),i=a.method||"GET",k=a.async||!0,f=a.params||null,h=a.contentType||"text",g=a.url,l=a.username||"",m=a.password||"";a.url.indexOf(kango.SCHEME)==0&&(g=kango.io.getExtensionFileUrl(a.url.replace(kango.SCHEME,"")));
+f!=null&&(typeof a.params=="object"&&(f=this._paramsToString(f)),i=="GET"&&(g=g+"?"+f,f=null));try{b.open(i,g,k,l,m)}catch(n){return c(d()),d()}typeof b.overrideMimeType!="undefined"&&h=="json"&&b.overrideMimeType("application/json");b.onreadystatechange=function(){b.readyState==4&&(typeof c=="function"||typeof c.call!="undefined"&&typeof c.apply!="undefined")&&c(e(b,h))};if(typeof a.headers=="object")for(var j in a.headers)b.setRequestHeader(j,a.headers[j]);try{b.send(f)}catch(o){return c(d()),d()}return e(b,
+h)}};kango.xhr=new KangoXHR;kango.addEventListener(kango.event.Ready,function(){kango.messaging.server.addListener("xhr.send",function(a){kango.xhr.send(a.data,function(c){a.sendResponse(c)})})});

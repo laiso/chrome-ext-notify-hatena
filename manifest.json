@@ -1,0 +1,36 @@
+{
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*", 
+        "https://*/*"
+      ], 
+      "all_frames": true, 
+      "js": [
+        "includes/content_userscript.js", 
+        "includes/content_kango.js"
+      ]
+    }
+  ], 
+  "description": "", 
+  "icons": {
+    "128": "icons/icon128.png", 
+    "48": "icons/icon48.png", 
+    "16": "icons/icon16.png"
+  }, 
+  "version": "0.1.0", 
+  "background_page": "background.html", 
+  "permissions": [
+    "tabs", 
+    "http://*/*", 
+    "https://*/*", 
+    "contextMenus"
+  ], 
+  "browser_action": {
+    "default_icon": "icons/icon16_gray.png", 
+    "default_title": "Notify Hatena",
+    "default_popup": "popup.html"
+  }, 
+  "name": "Notify Hatena",
+  "update_url": "http://clients2.google.com/service/update2/crx"
+}

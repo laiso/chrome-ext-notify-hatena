@@ -1,0 +1,13 @@
+{
+  "description": "", 
+  "background_scripts": [
+    "main.js"
+  ], 
+  "version": "0.1.0", 
+  "browser_button": {
+    "tooltipText": "Notify Hatena", 
+    "icon": "icons/icon16_gray.png"
+  }, 
+  "id": "{6F4DCD7C-7E52-11E0-8BAC-3CB64724019C}", 
+  "name": "Notify Hatena"
+}

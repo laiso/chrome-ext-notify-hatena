@@ -1,0 +1,9 @@
+﻿/*
+Built using Kango - Cross Browser Extensions framework.
+http://kangoextensions.com/
+*/
+function KangoUserscriptEngine(){this.scripts=[]}
+KangoUserscriptEngine.prototype={scripts:[],addScript:function(a){this.scripts.push(new KangoUserScript(a));return!0},clear:function(){this.scripts=[]},getScripts:function(a){for(var c=[],e=0;e<this.scripts.length;e++){var d=this.scripts[e];this.isIncludedUrl(d,a)&&!this.isExcludedUrl(d,a)&&c.push(d.text)}return c},checkPatternArray:function(a,c){if(typeof a!="undefined"){a instanceof Array||(a=Array(a));for(var e=0;e<a.length;e++){var d=a[e].replace(/\*/g,"(.*)"),d=d.replace(/tld/g,"(.*)");if(RegExp(d).test(c))return!0}}return!1},
+isIncludedUrl:function(a,c){if(a.headers.include==null)return!0;return this.checkPatternArray(a.headers.include,c)},isExcludedUrl:function(a,c){if(a.headers.exclude==null)return!1;return this.checkPatternArray(a.headers.exclude,c)}};function KangoUserScript(a){this.text=a;this.parseHeaders()}
+KangoUserScript.prototype={headers:null,text:null,parseHeaders:function(){this.headers=this.parseHeadersToArray(this.text);if(typeof this.headers.match!="undefined")typeof this.headers.include=="undefined"?this.headers.include=this.headers.match:this.headers.include.concat(this.headers.match)},parseHeadersToArray:function(a){for(var c={},e,d,b,f=kango.array.filter(a.split(/\n/),/\/\/ @/),a=0;a<f.length;a++)e=f[a],b=e.match(/\/\/ @(\S+)\s*(.*)/),d=b[1],e=b[2],e=e.replace(/\n/gi,""),e=e.replace(/\r/gi,
+""),b=d.split(/:/).reverse(),d=b[0],(b=b[1])?(c[b]||(c[b]=[]),b=c[b]):b=c,b[d]&&!(b[d]instanceof Array)&&(b[d]=Array(b[d])),b[d]instanceof Array?b[d].push(e):b[d]=e;return c}};kango.addEventListener(kango.event.Ready,function(){kango.userscript=new KangoUserscriptEngine;var a=kango.getExtensionInfo().content_scripts;if(typeof a!="undefined")for(var c=0;c<a.length;c++)kango.userscript.addScript(kango.io.getExtensionFileContents(a[c]))});

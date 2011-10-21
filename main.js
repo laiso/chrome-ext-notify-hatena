@@ -7,7 +7,7 @@
 
 NotifyHatena.prototype = {
 
-  /_refreshTimeout: 60*1000*15,	// 15 minutes
+  _refreshTimeout: 60*1000*15,	// 15 minutes
   _feedUrl: 'http://notify.hatena.ne.jp/notices.count.json',
 
   _setOffline: function() {

@@ -2,7 +2,6 @@
   var self = this;
   self.refresh();
   window.setInterval(function(){self.refresh()}, self._refreshTimeout);
-  chrome.browserAction.onClicked.addListener(function(tab){ alert(1) });
 }
 
 NotifyHatena.prototype = {

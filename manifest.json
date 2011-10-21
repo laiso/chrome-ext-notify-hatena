@@ -1,36 +1,22 @@
 {
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/*", 
-        "https://*/*"
-      ], 
-      "all_frames": true, 
-      "js": [
-        "includes/content_userscript.js", 
-        "includes/content_kango.js"
-      ]
-    }
-  ], 
   "description": "", 
   "icons": {
     "128": "icons/icon128.png", 
     "48": "icons/icon48.png", 
-    "16": "icons/icon16.png"
+    "16": "icons/icon32.png"
   }, 
-  "version": "0.1.0", 
+  "version": "0.1.2", 
   "background_page": "background.html", 
   "permissions": [
-    "tabs", 
-    "http://*/*", 
-    "https://*/*", 
-    "contextMenus"
+    "http://www.hatena.ne.jp/*"
+    ,"https://www.hatena.ne.jp/*"
+    ,"http://notify.hatena.ne.jp/*"
   ], 
   "browser_action": {
-    "default_icon": "icons/icon16_gray.png", 
+    "default_icon": "icons/icon32_gray.png", 
     "default_title": "Notify Hatena",
     "default_popup": "popup.html"
   }, 
-  "name": "Notify Hatena",
+  "name": "Hatena Notify",
   "update_url": "http://clients2.google.com/service/update2/crx"
 }

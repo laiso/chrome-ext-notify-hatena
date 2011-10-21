@@ -2,23 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-<style>
-div#popup {
-    min-height: 300px,
-    border: none,
-    background-color: #000,
-}
-</style>
 </head>
 <body>
-    <div id="popup">
-        <iframe seamless src="http://notify.hatena.ne.jp/notices.iframe" height="300px" frameborder="0"></iframe>
-    </div>
+        <iframe id="notices" seamless src="http://notify.hatena.ne.jp/notices.iframe" height="300px" frameborder="0"></iframe>
 
     <script>
-      var bg =chrome.extension.getBackgroundPage()
-      bg.kango.ui.browserButton.setTooltipText("");
-      bg.kango.ui.browserButton.setBadgeValue(0);
+      var bg = chrome.extension.getBackgroundPage()
+      var kango = bg.kango;
+      bg.notifyHatena.clean();
     </script>
 </body>
 </html>

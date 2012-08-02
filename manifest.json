@@ -10,7 +10,6 @@
   "permissions": [
     "http://www.hatena.ne.jp/*"
     ,"https://www.hatena.ne.jp/*"
-    ,"http://notify.hatena.ne.jp/*"
   ], 
   "browser_action": {
     "default_icon": "icons/icon32_gray.png", 

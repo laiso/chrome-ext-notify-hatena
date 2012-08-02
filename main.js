@@ -8,7 +8,7 @@ NotifyHatena.prototype = {
 
   _offLine: false,
   _refreshTimeout: 60*1000*15,	// 15 minutes
-  _feedUrl: 'http://notify.hatena.ne.jp/notices.count.json',
+  _feedUrl: 'https://www.hatena.ne.jp/notify/notices.count.json',
 
   _setOffline: function() {
     this._offLine = true;
